@@ -1,18 +1,15 @@
-:question: Questo file contiene la spiegazione dei vari campi. Per avere un
-template pronto all'uso si veda [README.template.md](README.template.md)
-:question:
+# Conformal Inference Prediction Regions for Multiple Variable Regression
 
-Il file README deve necessariamente restare snello e scorrevole, per
-approfondimenti o specifiche configurazioni del software in questione si deve
-rimandare alla documentazione.
+This R package is composed by a few key functions:
 
-È buona norma utilizzare correttamente la sintassi del formato Markdown per
-evidenziare i comandi da lanciare o particolari blocchi di codice, 
-per maggiori informazioni si veda [come creare e sottlineare i blocchi di codice](https://docs.github.com/en/github/writing-on-github/creating-and-highlighting-code-blocks)
+- **conformal.multidim.full** : computes Prediction Regions with Full Conformal
+- **conformal.multidim.split** : computes Prediction Regions with Split Conformal
+- **conformal.multidim.msplit** : computes Prediction Regions with Multi Split Conformal
+- **plot_full** : plots Prediction Regions with Full Conformal
+- **plot_split** : plots Prediction Regions with Split Conformal
 
----
+![image](/readmepic/Rplot01.png)
 
-# Badges
 I badge comunicano in modo semplice e rapido lo stato del progetto: build
 status, ultima versione, stato del packaging sui repository di pacchetti scelti etc.
 Per questo motivo è buona prassi dotare i propri README di questi badge in cima

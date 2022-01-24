@@ -1,6 +1,8 @@
 # Conformal Inference Prediction Regions for Multiple Variable Regression
 
-This R package is composed by a few key functions:
+Conformal Inference is a well known tool to construct valid prediction regions.
+
+## Key functions
 
 - **conformal.multidim.full** : computes Prediction Regions with Full Conformal
 - **conformal.multidim.split** : computes Prediction Regions with Split Conformal
@@ -8,7 +10,16 @@ This R package is composed by a few key functions:
 - **plot_full** : plots Prediction Regions with Full Conformal
 - **plot_split** : plots Prediction Regions with Split Conformal
 
+## Plots
+
+
 ![image](/readmepic/Rplot01.png)
+
+*Full Conformal prediction region*
+
+![image](/readmepic/Rplot02.png)
+
+*Split Conformal prediction region*
 
 I badge comunicano in modo semplice e rapido lo stato del progetto: build
 status, ultima versione, stato del packaging sui repository di pacchetti scelti etc.

@@ -1,10 +1,9 @@
-#' Elastic net, lasso, ridge regression training and prediction functions.
+#' Elastic Net, Lasso, Ridge Regression Training and Prediction Functions
 #'
 #' Construct training and prediction functions for the elastic net, the lasso,
 #'   or ridge regression, based on the \code{\link{glmnet}} package, over a
 #'   sequence of (given or internally computed) lambda values.
 #'
-#' @name glmnet.funs
 #'
 #' @param gamma Mixing parameter (between 0 and 1) for the elastic net, where
 #'   0 corresponds to ridge regression, and 1 to the lasso. Default is 0.5.

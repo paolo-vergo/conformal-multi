@@ -1,6 +1,7 @@
 #' Linear Modeling of Multivariate Response
 #'
-#' This model is fed to conformal prediction functions.
+#' This model is fed to \code{\link{conformal.multidim.full}},
+#' \code{\link{conformal.multidim.split}}, and \code{\link{conformal.multidim.msplit}}.
 #' It outputs a training function and a prediction function.
 #'
 #' @return A list with the training function and the prediction function.
@@ -16,9 +17,7 @@
 #' newx The new features to evaluate (i.e. an n0 x p matrix)
 #' Here I defined an lm model for every dimension of the responses (q).
 #' @importFrom stats lm
-#' @seealso \code{\link{conformal.multidim.split}}
 #' @export lm_multi
-
 
 
 lm_multi = function() {
@@ -54,3 +53,6 @@ lm_multi = function() {
 
   return(list(train.fun=train.fun, predict.fun=predict.fun))
 }
+
+
+

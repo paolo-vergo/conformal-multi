@@ -14,9 +14,9 @@ conformal.multidim.split(
   split = NULL,
   seed = FALSE,
   randomized = FALSE,
-  seed_tau = FALSE,
+  seed_rand = FALSE,
   verbose = FALSE,
-  training_size = 0.5,
+  rho = 0.5,
   score = "l2",
   s_type = "st-dev",
   mad.train.fun = NULL,
@@ -54,11 +54,11 @@ is ignored.}
 
 \item{randomized}{Should the randomized approach be used? Default is FALSE.}
 
-\item{seed_tau}{The seed for the randomized version. Default is FALSE.}
+\item{seed_rand}{The seed for the randomized version. Default is FALSE.}
 
 \item{verbose}{Should intermediate progress be printed out? Default is FALSE.}
 
-\item{training_size}{Split proportion between training and calibration set.
+\item{rho}{Split proportion between training and calibration set.
 Default is 0.5.}
 
 \item{score}{The non-conformity measure. It can either be "max", "l2", "mahalanobis".
@@ -103,18 +103,20 @@ If the two mad functions are provided they take precedence over the s_type param
 and they force a local scoring via the mad function predicted values.
 }
 \examples{
+n=50
+p=4
+q=2
 
-sample_size=98
 
-my_grid <- seq(from=0,to=1,length.out=5)
-mu <- c(0,0,0)
-sigma <- rbind(c(1,0.6,0.6), c(0.6,1,0.6), c(0.6,0.6,1))
-mltvnorm3 <- mvtnorm::rmvnorm(sample_size, mu, sigma)
-y=t(apply(mltvnorm3,1,function(x) x[1] + x[2]*cos(6*pi*my_grid) + x[3]*sin(6*pi*my_grid)))
-x=mltvnorm3 + mvtnorm::rmvt(sample_size, diag(length(mu)))## add noise
+mu=rep(0,p)
+x = mvtnorm::rmvnorm(n, mu)
+beta<-sapply(1:q, function(k) c(mvtnorm::rmvnorm(1,mu)))
+y = x\%*\%beta + t(mvtnorm::rmvnorm(q,1:n))
+x0=x[ceiling(0.9*n):n,]
+y0=y[ceiling(0.9*n):n,]
 
-n0=10
-x0 = mvtnorm::rmvt(n0, diag(length(mu)))
+n0<-nrow(y0)
+q<-ncol(y)
 
 fun=mean_multi()
 fun=lm_multi()
@@ -124,12 +126,12 @@ fun=elastic.funs()
 ############################## SPLIT CONFORMAL
 
 
-final.point = conformal.multidim.split(x,y[,1:2],x0[1:10,], fun$train.fun, fun$predict.fun,
+final.point = conformal.multidim.split(x,y,x0, fun$train.fun, fun$predict.fun,
                              alpha=0.1,
-                                split=NULL, seed=FALSE, randomized=FALSE,seed_tau=FALSE,
-                                verbose=FALSE, training_size=0.5,score ="l2",s_type="st-dev")
+                                split=NULL, seed=FALSE, randomized=FALSE,seed_rand=FALSE,
+                                verbose=FALSE, rho=0.5,score ="l2",s_type="st-dev")
 
-ppp2<-plot_multidim(final.point)
+ppp2<-plot_multidim_split(final.point)
 }
 \references{
 The s_regression and the "max" score are taken from "Conformal Prediction Bands

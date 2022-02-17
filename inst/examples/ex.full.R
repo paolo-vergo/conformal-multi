@@ -1,14 +1,20 @@
+n=25
+p=4
+q=2
 
-n = 4
-n0 = 2
-p = 2
-mu = rep(0,p)
+
+mu=rep(0,p)
 x = mvtnorm::rmvnorm(n, mu)
-my_grid <- seq(from=0,to=1,length.out=2)
-y = t(apply(x,1,function(u) u[1] + u[2]*cos(6*pi*my_grid)))
-x0 = mvtnorm::rmvnorm(n0, mu)
+beta<-sapply(1:q, function(k) c(mvtnorm::rmvnorm(1,mu)))
+y = x%*%beta + t(mvtnorm::rmvnorm(q,1:n))
+x0=x[ceiling(0.9*n):n,]
+y0=y[ceiling(0.9*n):n,]
+
+n0<-nrow(y0)
+q<-ncol(y)
+
+
 fun=mean_multi()
-#fun=lm_multi()
 
 #################################### FULL CONFORMAL
 

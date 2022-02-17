@@ -1,4 +1,4 @@
-#' Full Conformal prediction intervals, Multivariate Response
+#' Full Conformal Prediction Regions, Multivariate Response
 #'
 #' Compute prediction intervals using full conformal inference with multivariate
 #' response
@@ -40,13 +40,15 @@
 #'   usual (unscaled) conformal score is used.
 #' @param score Method to compute nonconformity measure in the multivariate regime.
 #' The user can choose between squared l^2 norm of the residual,
-#' mahalanobis depth of the residual, the max norm of the residual, or a scaled max
+#' mahalanobis depth of the residual, the max norm of the residual.
+#' @param s.type The type of modulation function.
+#'  Currently we have 3 options: "identity","st-dev". Default is "st-dev"
 #' @param num.grid.pts.dim Number of grid points per dimension used when forming the conformal
 #'   intervals (each num.grid.pts.dim^q points is a trial point). Default is
 #'   100.
 #' @param grid.factor Expansion factor used to define the grid for the conformal
 #'   intervals, i.e., the grid points are taken to be equally spaced in between
-#'   -grid.factor*max(abs(y)) and grid.factor*max(abs(y)). Default is 1.25. In
+#'   -grid.factor x max(abs(y)) and grid.factor x max(abs(y)). Default is 1.25. In
 #'   this case (and with exchangeable data, thus unity weights) the restriction
 #'   of the trial values to this range costs at most 1/(n+1) in coverage. See
 #'   details below.
@@ -60,17 +62,17 @@
 #'
 #' @details Due to eventual computational overload the function is restricted to a bivariate y.
 #' @details This function is based on the package \code{\link{future.apply}} to
-#'  perform parallelization.
+#'  perform parallelisation.
 #'
 #' @details If the data (training and test) are assumed to be exchangeable, the basic
 #'   assumption underlying conformal prediction, then the probability that a new
 #'   response value will lie outside of (-max(abs(y)), max(abs(y))), where y is
 #'   the vector of training responses, is 1/(n+1).  Thus the restriction of the
-#'   trials values to (-grid.factor*max(abs(y)), grid.factor*max(abs(y))), for
+#'   trials values to (-grid.factor x max(abs(y)), grid.factor x max(abs(y))), for
 #'   all choices grid.factor >= 1, will lead to a loss in coverage of at most
 #'   1/(n+1). This was also noted in "Trimmed Conformal Prediction for
-#'   High-Dimensional Models" by Chen, Wang, Ha, Barber (2016) (who use this
-#'   basic fact as motivation for proposing more refined trimming methods).
+#'   High-Dimensional Models" by Chen, Wang, Ha, Barber (2016) <arXiv:1611.09933>
+#'   (who use this basic fact as motivation for proposing more refined trimming methods).
 #'
 #' @seealso \code{\link{conformal.multidim.split}}
 #'
@@ -78,9 +80,10 @@
 #'
 #' @export conformal.multidim.full
 
+
 conformal.multidim.full = function(x, y, x0, train.fun, predict.fun,alpha = 0.1,mad.train.fun = NULL,
                                 mad.predict.fun = NULL,
-                                score=c('l2','mahalanobis','max',"scaled.max"),
+                                score='l2', s.type = "st-dev",
                                 num.grid.pts.dim=100, grid.factor=1.25,
                                 verbose=FALSE) {
 
@@ -103,6 +106,14 @@ conformal.multidim.full = function(x, y, x0, train.fun, predict.fun,alpha = 0.1,
   }
   check.pos.num(grid.factor)
 
+  flag = FALSE #in general mad funs are not present
+
+  # If mad funs exist, they take precedence
+  if(is.function(mad.train.fun) && is.function(mad.predict.fun)){
+    score = "identity"
+    flag = TRUE
+  }
+
   # Users may pass in a string for the verbose argument
   if (verbose == TRUE) txt = ""
   if (verbose != TRUE && verbose != FALSE) {
@@ -111,6 +122,10 @@ conformal.multidim.full = function(x, y, x0, train.fun, predict.fun,alpha = 0.1,
   }
 
   if (verbose) cat(sprintf("%sInitial training on full data set ...\n",txt))
+
+  if(! s.type %in% c("identity","st-dev"))
+    stop("Please provide a valid value for the argument 's.type'. \n
+         Choose between 'identity' or 'st-dev' ! \n")
 
   # Train, fit, and predict on full data set
   out = train.fun(x,y)
@@ -150,19 +165,23 @@ conformal.multidim.full = function(x, y, x0, train.fun, predict.fun,alpha = 0.1,
         out = train.fun(xx,yy,out)
 
       r = yy - matrix(predict.fun(out,xx),nrow=n+1)
-      if (!is.null(mad.train.fun) && !is.null(mad.predict.fun)) {
+
+      if (flag) {
           if (j==1)
             out.mad = mad.train.fun(xx,r)
           else
             out.mad = mad.train.fun(xx,r,out.mad)
             r = r / mad.predict.fun(out.mad,xx)
-        }
+      }
+
+      s=computing_s_regression(mat_residual=r,type=s.type,
+                               alpha=alpha,tau=0)
+      r = t(t(r)/ s)
 
       switch(score,
            "l2"={ncm=rowSums(r^2)},
            "mahalanobis"={ncm=mahalanobis(r,colMeans(r),cov(r))},
-           "max"={ncm=apply(abs(r), 1, max)},
-           "scaled.max"={r=r/apply(r,2,var);ncm=apply(abs(r),1,max)},
+           "max"={ncm=apply(abs(r), 1, max)}
       )
 
       return(sum(ncm>=ncm[n+1])/(n+1))
@@ -179,3 +198,5 @@ conformal.multidim.full = function(x, y, x0, train.fun, predict.fun,alpha = 0.1,
 
   return(list(valid_points = valid_points,pred = data.frame(pred)))
 }
+
+

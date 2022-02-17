@@ -8,11 +8,11 @@
 #' @details It exploits the package \code{\link{ggplot2}} and \code{\link{gridExtra}}
 #' to better visualize the results. It outputs n0=length(x0) plots.
 #' @example inst/examples/ex.split.R
-#' @export plot_multidim
+#' @export plot_multidim_split
 
 
 
-plot_multidim=function(split, same.scale = FALSE){
+plot_multidim_split=function(split, same.scale = FALSE){
 
 
   #Get Data

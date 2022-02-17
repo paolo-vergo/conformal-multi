@@ -10,7 +10,8 @@ mean_multi()
 A list with the training function and the prediction function.
 }
 \description{
-This model is fed to conformal prediction functions.
+This model is fed to \code{\link{conformal.multidim.full}},
+\code{\link{conformal.multidim.split}}, and \code{\link{conformal.multidim.msplit}}.
 It outputs a training function and a prediction function.
 }
 \details{
@@ -23,7 +24,4 @@ The predict function, instead, takes as input:
 
 out The output of a previous call to train.fun
 newx The new features to evaluate (i.e. an n0 x p matrix)
-}
-\seealso{
-\code{\link{conformal.multidim.split}}
 }

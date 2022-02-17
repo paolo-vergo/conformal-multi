@@ -48,7 +48,7 @@
 #' @noRd
 
 check.split=function(x,y,x0,train.fun,
-               predict.fun, alpha, seed, training_size, seed.tau, randomized,mad.train.fun=NULL, mad.predict.fun=NULL, score){
+               predict.fun, alpha, seed=1, training_size=0.5, seed.tau=2, randomized=FALSE,mad.train.fun=NULL, mad.predict.fun=NULL, score="l2"){
 
 
   check.null.data(y)

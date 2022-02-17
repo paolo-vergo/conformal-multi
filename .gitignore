@@ -2,3 +2,5 @@ revdep/
 inst/doc
 /doc/
 /Meta/
+.Rproj.user
+docs

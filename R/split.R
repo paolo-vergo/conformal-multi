@@ -24,9 +24,9 @@
 #'   If both split and seed are passed, the former takes priority and the latter
 #'   is ignored.
 #' @param randomized Should the randomized approach be used? Default is FALSE.
-#' @param seed_tau The seed for the randomized version. Default is FALSE.
+#' @param seed_rand The seed for the randomized version. Default is FALSE.
 #' @param verbose Should intermediate progress be printed out? Default is FALSE.
-#' @param training_size Split proportion between training and calibration set.
+#' @param rho Split proportion between training and calibration set.
 #' Default is 0.5.
 #' @param score The non-conformity measure. It can either be "max", "l2", "mahalanobis".
 #' The default is "l2".
@@ -62,6 +62,8 @@
 #'
 #' @importFrom stats mad mahalanobis
 #'
+#' @importFrom utils flush.console
+#'
 #' @seealso \code{\link{conformal.multidim.full}}
 #'
 #' @references The s_regression and the "max" score are taken from "Conformal Prediction Bands
@@ -73,8 +75,8 @@
 
 
 conformal.multidim.split = function(x,y, x0, train.fun, predict.fun, alpha=0.1,
-                                 split=NULL, seed=FALSE, randomized=FALSE,seed_tau=FALSE,
-                                 verbose=FALSE, training_size=0.5,
+                                 split=NULL, seed=FALSE, randomized=FALSE,seed_rand=FALSE,
+                                 verbose=FALSE, rho=0.5,
                                  score="l2",s_type="st-dev", mad.train.fun = NULL,
                                  mad.predict.fun = NULL) {
 
@@ -82,7 +84,7 @@ conformal.multidim.split = function(x,y, x0, train.fun, predict.fun, alpha=0.1,
   ## Check Data and Splits
   check.split(x=x,y=y,x0=x0,train.fun=train.fun,
               predict.fun=predict.fun, alpha=alpha, seed=seed, training_size
-              =training_size, seed.tau=seed.tau, randomized=randomized,
+              =rho, seed.tau=seed.tau, randomized=randomized,
               mad.train.fun = mad.train.fun, mad.predict.fun = mad.predict.fun, score = score)
 
   n=dim(x)[1]
@@ -107,10 +109,10 @@ conformal.multidim.split = function(x,y, x0, train.fun, predict.fun, alpha=0.1,
 
   if(is.null(split)){
 
-    if(ceiling(n*training_size) !=n )
-      m=ceiling(n*training_size)
+    if(ceiling(n*rho) !=n )
+      m=ceiling(n*rho)
     else
-      m=ceiling(n*training_size)-1
+      m=ceiling(n*rho)-1
 
     l=n-m
 
@@ -127,7 +129,7 @@ conformal.multidim.split = function(x,y, x0, train.fun, predict.fun, alpha=0.1,
   calibration=setdiff(1:n,training)
 
   if(randomized==FALSE) {tau=1} else{
-    if(seed_tau!=FALSE){set.seed(seed_tau)}
+    if(seed_rand!=FALSE){set.seed(seed_rand)}
     tau=stats::runif(n=1,min=0,max=1)
   }
 

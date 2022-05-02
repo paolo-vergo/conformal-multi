@@ -1,4 +1,4 @@
-# Conformal Inference Prediction Regions for Multiple Variable Regression
+# Conformal Inference Prediction Regions for Multiple Response Regression
 
 Conformal Inference is a well known tool to construct valid prediction regions.
 The R package is also hosted on CRAN under the name [conformalInference.multi](https://cran.r-project.org/web/packages/conformalInference.multi/index.html). 

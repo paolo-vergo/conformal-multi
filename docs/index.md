@@ -1,6 +1,6 @@
 ## Conformal inference prediction regions for Multivariate response regression
 
-This repository contains the package [conformalInference.multi] (now available also on CRAN), which can produce valid prediction regions at levels 1-$\alpha$ or 1-2$\alpha$ under the basic assumption of _i.i.d._ regression data. 
+This repository contains the package [conformalInference.multi] (now available also on CRAN), which can produce valid prediction regions at levels 1-$/alpha$ or 1-2$/alpha$ under the basic assumption of _i.i.d._ regression data. 
 
 The package was developed as part of my MSc. final thesis in Mathematical Engineering at Politecnico di Milano. 
 

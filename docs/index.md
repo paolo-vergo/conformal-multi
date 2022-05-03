@@ -1,6 +1,6 @@
 ## Conformal inference prediction regions for Multivariate response regression
 
-This repository contains the package [conformalInference.multi] (now available also on CRAN), which can produce valid prediction regions at levels 1-α or 1-2α under the basic assumption of _i.i.d._ regression data. 
+This repository contains the R package [conformalInference.multi](https://cran.r-project.org/web/packages/conformalInference.multi/index.html) (now available also on CRAN), which can produce valid prediction regions at levels 1-α or 1-2α under the basic assumption of _i.i.d._ regression data. 
 
 The package was developed as part of my MSc. final thesis in Mathematical Engineering at Politecnico di Milano, as a multivariate extension of the main methods for Conformal Prediction for regression in the univariate response case.
 
@@ -37,40 +37,14 @@ The central idea upon which the package is designed is the following: regression
   </div>
 
 
+### Detailed description
 
+A complete description of the theory underpinning the package, an analysis of all the main functions as well as a case study is presented in my final MSc. thesis paper, availble at the following [link]().
 
-You can use the [editor on GitHub](https://github.com/paolo-vergo/conformalInference.multi/edit/master/docs/index.md) to maintain and preview the content for your website in Markdown files.
+### Acknownledgments
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+Prof. Simone Vantini - _Politecnico di Milano_
+Doct. Jacopo Diquigiovanni
+Doct. Matteo Fontana
+Prof. Aldo Solari - _Università Bicocca di Milano_
 
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/paolo-vergo/conformalInference.multi/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.

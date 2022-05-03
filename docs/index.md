@@ -45,9 +45,9 @@ A complete description of the theory underpinning the package, an analysis of al
 
 Prof. Simone Vantini - _Politecnico di Milano_
 
-Doct. Jacopo Diquigiovanni
+Dr. Jacopo Diquigiovanni
 
-Doct. Matteo Fontana
+Dr. Matteo Fontana
 
 Prof. Aldo Solari - _Università Bicocca di Milano_
 

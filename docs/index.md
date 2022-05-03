@@ -16,12 +16,9 @@ The central idea upon which the package is designed is the following: regression
 
 ### Main Functions
 
-<br/>
-<div align="center">
 
 
 | Syntax      | Description |
-  
 | ----------- | ---------------- |
 |conformal.multidim.full| Computes Full Conformal prediction regions|
 |conformal.multidim.jackplus | Computes Jackknife+ prediction regions|
@@ -34,7 +31,6 @@ The central idea upon which the package is designed is the following: regression
 |plot_multidim| Plot the output of prediction methods|
 |ridge.funs| Build elastic net regression|
   
-  </div>
 
 
 ### Detailed description

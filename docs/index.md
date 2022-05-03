@@ -1,4 +1,3 @@
-## Conformal inference prediction regions for Multivariate response regression
 
 This repository contains the R package [conformalInference.multi](https://cran.r-project.org/web/packages/conformalInference.multi/index.html) (now available also on CRAN), which can produce valid prediction regions at levels 1-α or 1-2α under the basic assumption of _i.i.d._ regression data. 
 
@@ -39,7 +38,7 @@ The central idea upon which the package is designed is the following: regression
 
 ### Detailed description
 
-A complete description of the theory underpinning the package, an analysis of all the main functions as well as a case study is presented in my final MSc. thesis paper, availble at the following [link]().
+A complete description of the theory underpinning the package, an analysis of all the main functions as well as a case study is presented in my final MSc. thesis paper, is availble at the following [link]().
 
 ### Acknownledgments
 

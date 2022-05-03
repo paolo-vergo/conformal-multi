@@ -21,6 +21,7 @@ The central idea upon which the package is designed is the following: regression
 
 
 | Syntax      | Description |
+  
 | ----------- | ---------------- |
 |conformal.multidim.full| Computes Full Conformal prediction regions|
 |conformal.multidim.jackplus | Computes Jackknife+ prediction regions|

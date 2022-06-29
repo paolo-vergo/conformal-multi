@@ -4,12 +4,14 @@ Title: Conformal Inference Tools for Regression with Multivariate
     Response
 Version: 1.0.0
 Authors@R: c(
+    person("Paolo", "Vergottini", , "paolo.vergottini@gmail.com", role = c("aut")),
+    person("Matteo", "Fontana", , "matteo.fontana@ec.europa.eu", role = c("aut", "ths","cre")),
     person("Jacopo", "Diquigiovanni", role = c("aut", "ths")),
-    person("Matteo", "Fontana", , "matteo.fontana@ec.europa.eu", role = c("aut", "ths")),
     person("Aldo", "Solari", role = c("aut", "ths")),
     person("Simone", "Vantini", role = c("aut", "ths")),
-    person("Paolo", "Vergottini", , "paolo.vergottini@gmail.com", role = c("aut", "cre")),
     person("Ryan", "Tibshirani", role = "ctb")
+    person("Italian Space Agency & Politecnico di Milano - Accordo Quadro "Attivita'
+di Ricerca e Innovazione" n. 2018-5-HH.0", role = 'fnd')
     )
 Description: It computes full conformal, split conformal and multi split
     conformal prediction regions when the response variable is

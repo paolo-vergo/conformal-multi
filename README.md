@@ -1,8 +1,11 @@
 # Conformal Inference Prediction Regions for Multivariate Response Regression
 
 <div align="center">
-  <img src="./readmepic/Rplot01.png" alt="Base image">
+  <img src="./readmepic/Rplot01.png" alt="Base image" width="600">
 </div>
+
+
+<br> <br>
 
 Welcome to the world of accurate and versatile regression analysis with the conformalInference.multi R package! 
 This repository hosts a powerful tool that allows you to generate valid prediction regions at levels 1-α or 1-2α in multivariate response regression. What sets this package apart is its ability to handle a wide range of data distributions, eliminating the need for Gaussian assumptions commonly found in traditional methods.
@@ -45,7 +48,7 @@ The conformalInference.multi package offers an array of essential functions that
 
 ## Detailed Description
 
-To gain a comprehensive understanding of the theoretical foundations and practical implementation of conformalInference.multi, we invite you to explore the detailed analysis and case studies presented in the Master's thesis paper. The paper delves into the intricacies of the package, providing valuable insights and practical guidance. You can access the paper at the following [link]().
+To gain a comprehensive understanding of the theoretical foundations and practical implementation of conformalInference.multi, we invite you to explore the detailed analysis and case studies presented in the Master's thesis paper. The paper delves into the intricacies of the package, providing valuable insights and practical guidance. You can access the paper at the following [link](https://www.researchgate.net/publication/355892218_Conformal_Prediction_bands_for_multivariate_functional_data).
 
 ## Acknowledgments
 

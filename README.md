@@ -48,7 +48,7 @@ The conformalInference.multi package offers an array of essential functions that
 
 ## Detailed Description
 
-To gain a comprehensive understanding of the theoretical foundations and practical implementation of conformalInference.multi, we invite you to explore the detailed analysis and case studies presented in the Master's thesis paper. The paper delves into the intricacies of the package, providing valuable insights and practical guidance. You can access the paper at the following [link](https://www.researchgate.net/publication/355892218_Conformal_Prediction_bands_for_multivariate_functional_data).
+To gain a comprehensive understanding of the theoretical foundations and practical implementation of conformalInference.multi, we invite you to explore the detailed analysis and case studies presented in the Master's thesis paper. The paper delves into the intricacies of the package, providing valuable insights and practical guidance. You can access the paper at the following [link](https://arxiv.org/abs/2106.01792).
 
 ## Acknowledgments
 
